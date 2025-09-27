@@ -1,0 +1,104 @@
+#!/usr/bin/env python3
+"""
+Simple 'Guess the Number' game.
+
+How to play:
+- The computer chooses a random number between 1 and 100.
+- You try to guess it. After each guess you'll get feedback: too low / too high / correct.
+- You have a limited number of attempts depending on chosen difficulty.
+
+Features:
+- Three difficulty levels (Easy/Medium/Hard).
+- Tracking of attempts and best score in the session.
+- Optional play again prompt.
+"""
+
+import random
+import sys
+
+
+def choose_difficulty():
+    choices = {
+        "1": (1, 100, 12),   # Easy: 12 attempts
+        "2": (1, 100, 8),    # Medium: 8 attempts
+        "3": (1, 100, 5),    # Hard: 5 attempts
+    }
+    print("Choose difficulty:")
+    print("1) Easy (1-100, 12 attempts)")
+    print("2) Medium (1-100, 8 attempts)")
+    print("3) Hard (1-100, 5 attempts)")
+    while True:
+        choice = input("Enter 1, 2, or 3: ").strip()
+        if choice in choices:
+            return choices[choice]
+        print("Invalid choice. Try again.")
+
+
+def get_int(prompt, low=None, high=None):
+    while True:
+        try:
+            val = int(input(prompt))
+            if low is not None and val < low:
+                print(f"Please enter a number >= {low}.")
+                continue
+            if high is not None and val > high:
+                print(f"Please enter a number <= {high}.")
+                continue
+            return val
+        except ValueError:
+            print("That's not a valid integer. Try again.")
+
+
+def play_round(low, high, max_attempts):
+    secret = random.randint(low, high)
+    attempts = 0
+    print(f"\nI've picked a number between {low} and {high}. You have {max_attempts} attempts.")
+
+    while attempts < max_attempts:
+        remaining = max_attempts - attempts
+        guess = get_int(f"Attempt {attempts+1}/{max_attempts} - Your guess: ", low, high)
+        attempts += 1
+
+        if guess == secret:
+            print(f"Correct! You guessed the number in {attempts} attempts.")
+            return attempts
+        elif guess < secret:
+            print("Too low.")
+        else:
+            print("Too high.")
+
+        if attempts < max_attempts:
+            print(f"You have {max_attempts - attempts} attempts left.\n")
+
+    print(f"Out of attempts! The number was {secret}.")
+    return None
+
+
+def main():
+    print("Welcome to Guess the Number!\n")
+    best_score = None
+
+    while True:
+        low, high, max_attempts = choose_difficulty()
+        result = play_round(low, high, max_attempts)
+
+        if result is not None:
+            if best_score is None or result < best_score:
+                best_score = result
+                print("New best score!\n")
+        else:
+            print("Better luck next time.\n")
+
+        print(f"Current best score (fewest attempts): {best_score if best_score is not None else 'N/A'}")
+        again = input("Play again? (y/n): ").strip().lower()
+        if again != 'y':
+            print("Thanks for playing! Goodbye.")
+            break
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except (KeyboardInterrupt, EOFError):
+        print("\nGoodbye!")
+        sys.exit(0)
